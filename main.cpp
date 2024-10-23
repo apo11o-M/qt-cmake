@@ -1,12 +1,13 @@
-#include <QApplication>
-#include "mainwindow.h"
+#include <iostream>
+#include <thread>
+
+#include "qt/entry.cpp"
+#include "sdr/entry.cpp"
 
 int main(int argc, char *argv[]) {
-    QApplication app(argc, argv);
+    std::thread gui(qt_thread);
+    std::thread sdr(sdr_thread);
 
-    MainWindow window;
-    window.resize(800, 480);
-    window.show();
-
-    return app.exec();
+    gui.join();
+    sdr.join();
 }
