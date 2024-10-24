@@ -16,7 +16,7 @@ if(MSVC)
     add_compile_options(/Zc:__cplusplus /permissive-)
 endif()
 
-find_package(Qt6 COMPONENTS REQUIRED Widgets)
+find_package(Qt6 COMPONENTS REQUIRED Core Gui Widgets)
 
 set(QT_SOURCES
     qt/mainwindow.cpp
@@ -33,4 +33,4 @@ add_executable(qtcmake
     main.cpp
 )
 
-target_link_libraries(qtcmake PRIVATE Qt6::Widgets)
+target_link_libraries(qtcmake PRIVATE Qt6::Widgets Qt6::Core Qt6::Gui)
