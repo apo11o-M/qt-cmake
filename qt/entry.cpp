@@ -1,15 +1,15 @@
 #include <thread>
 
-#include <QApplication>
+#include "QtWidgets/QApplication"
 #include "mainwindow.h"
 
-// second thread that runs the 
-void qt_thread() {
-    QApplication app();
+// second thread that runs the qt gui
+void qt_thread(int &argc, char *argv[]) {
+    QApplication app(argc, argv);
 
     MainWindow window;
     window.resize(800, 480);
     window.show();
 
-    return app.exec();    
+    app.exec();    
 }

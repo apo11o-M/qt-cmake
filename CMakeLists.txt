@@ -16,12 +16,21 @@ if(MSVC)
     add_compile_options(/Zc:__cplusplus /permissive-)
 endif()
 
-find_package(Qt6 COMPONENTS Widgets REQUIRED)
+find_package(Qt6 COMPONENTS REQUIRED Widgets)
+
+set(QT_SOURCES
+    qt/mainwindow.cpp
+    qt/entry.cpp
+)
+
+set(SDR_SOURCES
+    sdr/entry.cpp
+)
 
 add_executable(qtcmake
+    ${QT_SOURCES}
+    ${SDR_SOURCES}
     main.cpp
-    mainwindow.cpp
-    mainwindow.h
 )
 
 target_link_libraries(qtcmake PRIVATE Qt6::Widgets)
